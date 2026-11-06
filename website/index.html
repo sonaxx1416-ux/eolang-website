@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>لغة eo</title>
+<meta name="description" content="eo لغة برمجة بسيطة مكتوبة بـ Go: استدعاء بدون أقواس، أنواع تحميك من الأخطاء، prc لحد الوقت والذاكرة، وتحوّل برنامجك إلى exe.">
+<meta name="theme-color" content="#F87171">
+<link rel="icon" type="image/png" href="assets/eo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="-0.6 0 25.2 24"><path fill-rule="evenodd" d="M12.21 16.40 L10.80 16.40 L10.71 16.32 L10.30 16.32 L9.97 16.15 L9.72 16.15 L8.72 15.65 L8.14 15.24 L7.52 14.62 L6.85 13.70 L6.60 13.20 L6.60 13.04 L6.44 12.79 L6.35 12.21 L6.27 12.12 L6.27 10.80 L6.35 10.71 L6.44 10.13 L6.60 9.88 L6.69 9.55 L7.02 9.05 L7.72 8.35 L8.22 8.01 L8.97 7.68 L9.63 7.60 L9.72 7.52 L10.88 7.52 L10.96 7.60 L11.71 7.68 L12.71 8.10 L13.62 8.76 L14.33 9.55 L14.66 10.13 L14.78 10.17 L14.91 10.05 L14.91 9.88 L15.16 9.38 L15.40 9.05 L16.11 8.35 L16.61 8.01 L16.94 7.85 L17.61 7.68 L17.69 7.60 L18.02 7.60 L18.10 7.52 L19.43 7.52 L19.52 7.60 L19.93 7.60 L20.26 7.76 L20.76 7.85 L21.92 8.51 L22.80 9.30 L23.54 10.38 L23.54 10.55 L23.71 10.80 L23.71 10.96 L23.88 11.29 L23.88 11.63 L23.96 11.71 L23.96 12.96 L23.88 13.04 L23.88 13.37 L23.79 13.45 L23.79 13.70 L23.63 13.95 L23.63 14.12 L23.21 14.78 L22.26 15.65 L21.26 16.15 L21.01 16.15 L20.60 16.32 L19.18 16.32 L18.77 16.15 L18.44 16.15 L18.35 16.07 L17.69 15.90 L17.44 15.74 L17.27 15.74 L16.53 15.24 L15.49 14.12 L15.24 13.62 L15.07 13.45 L14.91 12.87 L14.78 12.75 L10.88 12.75 L10.42 11.96 L10.42 11.79 L10.09 11.13 L10.38 10.92 L12.58 10.88 L12.42 10.63 L11.63 9.92 L11.21 9.84 L11.13 9.76 L10.63 9.76 L10.21 9.76 L10.13 9.84 L9.72 9.92 L9.09 10.46 L8.76 11.29 L8.76 12.04 L8.84 12.12 L8.93 12.62 L9.26 13.20 L9.72 13.66 L10.21 13.91 L10.38 14.08 L10.96 14.16 L11.04 14.24 L11.96 14.08 L12.46 13.74 L12.71 13.41 L13.12 13.41 L13.45 13.58 L13.70 13.58 L13.79 13.66 L14.37 13.74 L14.70 13.91 L14.95 13.91 L15.07 14.03 L14.66 14.87 L13.79 15.74 L13.04 16.15 L12.87 16.15 L12.54 16.32 L12.29 16.32 L12.21 16.40 Z M19.72 14.20 L20.43 14.08 L21.13 13.54 L21.55 12.79 L21.55 11.63 L21.13 10.80 L20.51 10.17 L20.26 10.09 L19.93 9.84 L19.35 9.76 L19.27 9.67 L18.85 9.67 L17.94 10.01 L17.31 10.63 L17.07 11.29 L17.07 12.04 L17.15 12.12 L17.15 12.37 L17.48 13.04 L18.19 13.74 L18.85 14.08 L19.72 14.20 Z M5.31 12.00 L2.99 12.00 L2.78 11.63 L5.31 11.58 L5.44 11.71 L5.44 11.88 L5.31 12.00 Z M5.65 13.08 L0.25 13.08 L-0.04 12.79 L-0.04 12.71 L5.48 12.66 L5.69 12.96 L5.65 13.08 Z M6.23 14.16 L1.99 14.16 L1.70 13.87 L1.70 13.79 L6.06 13.74 L6.27 14.12 L6.23 14.16 Z"/></symbol>
+  <symbol id="dl" viewBox="0 0 24 24"><path d="M11 3h2v10.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6z M4 19h16v2H4z" fill="currentColor"/></symbol>
+</svg>
+<canvas id="tiles" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="eo"><span class="mark"><svg fill="#fff"><use href="#logo"/></svg></span>eo</a>
+    <nav class="links" id="links">
+      <a href="#about">الفكرة</a>
+      <a href="#how">كيف تشتغل</a>
+      <a href="#docs">الشرح</a>
+      <a href="#play">جرّبها</a>
+      <a href="#download">التحميل</a>
+    </nav>
+    <a class="btn small" href="#download"><svg><use href="#dl"/></svg>تحميل</a>
+    <button class="menu" id="menu" aria-label="القائمة" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- ═══ hero ═══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow"><span class="sq"></span>لغة برمجة · الإصدار 1.6</div>
+      <h1>لغة <span class="eo">eo</span><br>اكتب الكود كأنك تقرأ جملة</h1>
+      <p class="lead">لغة بسيطة مكتوبة بـ Go. استدعاء بدون أقواس، وأنواع تحميك من الأخطاء، وميزة <code>prc</code> تشغّل أي كود بحد للوقت والذاكرة. وبأمر واحد يتحول برنامجك إلى <code>.exe</code>.</p>
+      <div class="ctas">
+        <a class="btn" href="downloads/eo.exe" download><svg><use href="#dl"/></svg>تحميل eo.exe <small><bdi>2.8 MB</bdi></small></a>
+        <a class="btn alt" href="downloads/eo-language-1.6.1.vsix" download><svg><use href="#dl"/></svg>إضافة VS Code</a>
+      </div>
+      <div class="meta"><span><i class="sq"></i>Windows x64</span><span><i class="sq"></i>بدون تثبيت</span><span><i class="sq"></i>تقدر تجربها هنا في المتصفح</span></div>
+    </div>
+    <div class="demo reveal">
+      <div class="card"><div class="cardbar"><i></i><i></i><i></i><span id="heroFile">main.eo</span></div><pre class="eo" id="heroCode"></pre></div>
+      <pre class="out" id="heroOut"></pre>
+      <div class="dots" id="heroDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ about ═══ -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>الفكرة</div>
+    <h2 class="title">وش هي eo؟</h2>
+    <p class="lead">eo لغة برمجة للي يبي يكتب برامج حقيقية بدون ما يضيع في الرموز. الكود ينقرأ زي الكلام، والأخطاء تقول لك وش الغلط وكيف تصلحه، والبرنامج الجاهز ملف واحد تشغّله على أي جهاز ويندوز.</p>
+    <div class="tiles">
+      <div class="tile card reveal"><div class="ic">a b</div><h3>استدعاء بدون أقواس</h3><p>اكتب <code>greet "Sara"</code> أو <code>add 2, 3</code>. ولو تبي الأقواس تمشي بعد.</p><pre class="eo">var r = add 2, 3
+print add(10, 20)</pre></div>
+      <div class="tile card reveal"><div class="ic">@</div><h3>أنواع تحميك</h3><p>حدد وش المسموح بـ <code>@</code> أو وش الممنوع بـ <code>!</code>. الشرط يتشيك عند كل تغيير.</p><pre class="eo">var v @(int bool) = 5
+var s !int = "Hi"</pre></div>
+      <div class="tile card reveal"><div class="ic">prc</div><h3>حد للوقت والذاكرة</h3><p>شغّل أي بلوك بحد. لو تعدّاه يوقف، وباقي البرنامج يكمل.</p><pre class="eo">p = prc -s 1 -m 50mb {
+    work()
+}</pre></div>
+      <div class="tile card reveal"><div class="ic">exe</div><h3>برنامج exe بأمر واحد</h3><p>يتحول الكود إلى bytecode وينحط مع المشغّل في ملف واحد، والمكتبات كلها داخله.</p><pre class="eo">eo build main.eo</pre></div>
+      <div class="tile card reveal"><div class="ic">λ</div><h3>قواميس و lambda ومكتبات</h3><p>كل اللي تحتاجه لبرنامج كامل: <code>@map</code> و <code>lambda</code> و <code>import</code>.</p><pre class="eo">print map(nums, lambda x { x * 10 })</pre></div>
+      <div class="tile card reveal"><div class="ic">؟</div><h3>أخطاء تقترح الصح</h3><p>كل خطأ معه رقم السطر، ولو كتبت اسم غلط تقترح عليك الصح.</p><pre class="eo">pritn "hi"
+# Did you mean 'print'?</pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ how it works ═══ -->
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>كيفية العمل</div>
+    <h2 class="title">من النص إلى برنامج شغّال</h2>
+    <p class="lead">الكود يمر بمراحل، كل مرحلة تجهّزه للي بعدها. اضغط على أي مرحلة وتشوف وش يصير لنفس البرنامج الصغير.</p>
+
+    <div class="pipe" id="pipe" role="tablist" aria-label="مراحل eo">
+      <button class="stage on" data-st="0" role="tab"><span class="grid9"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="nm">main.eo</span><span class="ar">الكود</span></button>
+      <span class="link"></span>
+      <button class="stage" data-st="1" role="tab"><span class="grid9"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="nm">Lexer</span><span class="ar">تقطيع</span></button>
+      <span class="link"></span>
+      <button class="stage" data-st="2" role="tab"><span class="grid9"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="nm">Parser</span><span class="ar">ترتيب</span></button>
+      <span class="link"></span>
+      <button class="stage" data-st="3" role="tab"><span class="grid9"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="nm">Bytecode</span><span class="ar">تعليمات</span></button>
+      <span class="link"></span>
+      <button class="stage" data-st="4" role="tab"><span class="grid9"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span class="nm">main.exe</span><span class="ar">برنامج جاهز</span></button>
+    </div>
+
+    <div class="howpanel">
+      <div class="howtext" id="howText"></div>
+      <div class="howcode card" id="howCode"></div>
+    </div>
+
+    <div class="modes">
+      <div class="mode card reveal"><h3>تشغيل مباشر</h3><p>المفسّر يمشي على الشجرة سطر سطر. أسرع طريقة وأنت تكتب.</p><pre class="out"><span class="p">&gt;</span> eo main.eo</pre></div>
+      <div class="mode card reveal"><h3>تشغيل على الـ VM</h3><p>يحوّل الكود لـ bytecode ويشغّله بدون ما يبني ملف.</p><pre class="out"><span class="p">&gt;</span> eo --vm main.eo</pre></div>
+      <div class="mode card reveal"><h3>بناء exe</h3><p>ملف واحد يشتغل لحاله. ترسله لأي أحد ويشغّله.</p><pre class="out"><span class="p">&gt;</span> eo build main.eo</pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ docs ═══ -->
+<section class="block" id="docs">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>الشرح</div>
+    <h2 class="title">كل شي عن اللغة</h2>
+    <p class="lead">من أول متغير لين البناء. أي مثال فيه زر <b>جرّب</b> يفتح في الملعب تحت ويشتغل على طول.</p>
+
+    <div class="docs">
+      <nav class="toc card" id="toc" aria-label="أقسام الشرح"></nav>
+      <div class="doc card" id="doc">
+
+<article data-t="البداية">
+  <h3>البداية</h3>
+  <p>حمّل <code>eo.exe</code> وحطه في مجلد مشروعك. اكتب ملف اسمه <code>main.eo</code> وشغّله من التيرمنال:</p>
+  <div class="snip"><pre class="eo" data-run>var name @string = "Ali"
+print "Hello " + name</pre></div>
+  <pre class="out" style="margin-top:12px"><span class="p">&gt;</span> ./eo.exe main.eo
+<span class="g">Hello Ali</span></pre>
+  <h4>التعليقات</h4>
+  <p>أي شي بعد <code>#</code> تعليق، اللغة تتجاهله.</p>
+  <div class="snip"><pre class="eo"># هذا تعليق
+print "hi"   # وهذا بعد</pre></div>
+  <ul>
+    <li>البلوكات تبدأ بـ <code>{</code> في نفس سطر الأمر: <code>if x {</code> و <code>func f {</code>.</li>
+    <li>الأسماء تقدر تكون بالعربي: <code>var اسم = "علي"</code></li>
+    <li>النصوص بـ <code>"..."</code> أو <code>'...'</code>، وفيها <code>\n</code> لسطر جديد و <code>\t</code> لمسافة.</li>
+  </ul>
+</article>
+
+<article data-t="المتغيرات والأنواع">
+  <h3>المتغيرات والأنواع</h3>
+  <div class="snip"><pre class="eo" data-run>var name = "Ali"          # النوع يتحدد تلقائياً
+var age @int = 20         # نوع محدد
+var pi @float = 3.14
+var ok @bool = true
+var nums @list = [1, 2, 3]
+var score @int            # بدون قيمة = 0
+const MAX = 100           # ثابت، ما يتغير
+print name, age, pi, ok, nums, score, MAX</pre></div>
+  <p>الأنواع: <code>@int</code> و <code>@float</code> و <code>@string</code> و <code>@bool</code> و <code>@list</code> و <code>@map</code> و <code>@lambda</code>.</p>
+  <div class="tbl"><table>
+    <tr><th>الكتابة</th><th>المعنى</th></tr>
+    <tr><td><code>@int</code></td><td>لازم يكون int</td></tr>
+    <tr><td><code>@(int bool)</code></td><td>int أو bool</td></tr>
+    <tr><td><code>!int</code></td><td>أي شي إلا int</td></tr>
+    <tr><td><code>!(int string)</code></td><td>أي شي إلا int و string</td></tr>
+  </table></div>
+  <div class="snip"><pre class="eo" data-run>var v @(int bool string) = 5
+v = true
+v = "ok"
+v = [1, 2]</pre></div>
+  <div class="errline">Error (line 4): 'v' must be one of @(int bool string) but got a list: [1, 2]</div>
+  <h4>تغيير القيمة</h4>
+  <div class="snip"><pre class="eo" data-run>var x = 1
+x = 10
+x += 5
+x *= 2
+print x</pre></div>
+  <p>لازم تعرّف المتغير بـ <code>var</code> قبل ما تغيّره. هذا يحميك من الأغلاط الإملائية، والثابت ما يتغير:</p>
+  <div class="errline">Error (line 1): 'y' is not declared. Declare it first: var y = ...
+Error (line 2): 'MAX' is a constant and can't be changed</div>
+</article>
+
+<article data-t="الطباعة والحساب">
+  <h3>الطباعة والحساب</h3>
+  <div class="snip"><pre class="eo" data-run>var age = 20
+print "Hello"
+print "age:", age        # الفاصلة تحط مسافة
+print 2 + 3 * 4          # 14
+print (2 + 3) * 4        # 20
+print 7 / 2, 7.0 / 2     # 3 3.5
+print 7 % 3              # 1
+print "Hi " + "Ali"
+print "=" * 10</pre></div>
+  <div class="tbl"><table>
+    <tr><th>العملية</th><th>مثال</th><th>النتيجة</th></tr>
+    <tr><td>جمع وطرح</td><td><code>5 + 3</code> ، <code>5 - 3</code></td><td><code>8</code> ، <code>2</code></td></tr>
+    <tr><td>ضرب</td><td><code>5 * 3</code></td><td><code>15</code></td></tr>
+    <tr><td>قسمة</td><td><code>7 / 2</code></td><td><code>3</code> (صحيح ÷ صحيح = صحيح)</td></tr>
+    <tr><td>قسمة عشرية</td><td><code>7.0 / 2</code></td><td><code>3.5</code></td></tr>
+    <tr><td>باقي القسمة</td><td><code>7 % 3</code></td><td><code>1</code></td></tr>
+  </table></div>
+</article>
+
+<article data-t="الشروط">
+  <h3>الشروط</h3>
+  <div class="snip"><pre class="eo" data-run>var age = 15
+if age >= 18 {
+    print "adult"
+} elif age > 12 {
+    print "teen"
+} else {
+    print "child"
+}</pre></div>
+  <p>المقارنات: <code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code>. والربط: <code>and</code> و <code>or</code> و <code>not</code> (أو <code>&amp;&amp;</code> و <code>||</code> و <code>!</code>).</p>
+  <div class="snip"><pre class="eo" data-run>var name = "Ali"
+var ok = false
+if not ok and name != "" {
+    print "hi " + name
+}
+print 3 in [1, 2, 3]       # true
+print "li" in "Ali"        # true</pre></div>
+</article>
+
+<article data-t="الحلقات">
+  <h3>الحلقات</h3>
+  <div class="snip"><pre class="eo" data-run>for i in range(5) {          # 0 1 2 3 4
+    print i
+}
+for i in range(2, 10, 2) {   # بداية، نهاية، خطوة
+    print i
+}
+for ch in "eo" {
+    print ch
+}</pre></div>
+  <h4>while و break و continue</h4>
+  <div class="snip"><pre class="eo" data-run>var i = 0
+while true {
+    i += 1
+    if i == 2 {
+        continue
+    }
+    if i > 4 {
+        break
+    }
+    print i
+}</pre></div>
+</article>
+
+<article data-t="القوائم">
+  <h3>القوائم</h3>
+  <div class="snip"><pre class="eo" data-run>var nums = [5, 3, 8]
+print nums[0]       # 5   (العد يبدأ من 0)
+print nums[-1]      # 8   (السالب يعد من الآخر)
+nums[0] = 50
+append nums, 1
+var last = pop(nums)
+print nums, last
+print sort(nums), reverse(nums)
+print sum(nums), max(nums), min(nums)</pre></div>
+  <div class="note">القائمة تنتقل بالمرجع: لو كتبت <code>var b = a</code> وعدّلت <code>b</code>، تتعدل <code>a</code> بعد.</div>
+</article>
+
+<article data-t="الدوال">
+  <h3>الدوال</h3>
+  <div class="snip"><pre class="eo" data-run>func greet name @string {
+    print "Hello " + name
+}
+
+func add a @int, b @int {
+    return a + b
+}
+
+greet "Sara"
+var r = add 2, 3
+print r, add(10, 20)</pre></div>
+  <ul>
+    <li>تقدر تستدعي الدالة قبل ما تعرّفها في الملف.</li>
+    <li>الدالة تنادي نفسها عادي (Recursion).</li>
+    <li>الاستدعاء بدون أقواس ياخذ كل القيم اللي بعده المفصولة بفاصلة، فلو عندك أكثر من استدعاء في سطر واحد استخدم الأقواس.</li>
+  </ul>
+  <div class="snip"><pre class="eo" data-run>func fib n @int {
+    if n &lt; 2 {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+print fib(20)    # 6765</pre></div>
+</article>
+
+<article data-t="القواميس">
+  <h3>القواميس <code>@map</code></h3>
+  <div class="snip"><pre class="eo" data-run>var user @map = {"name": "Ali", "age": 20}
+
+print user["name"]
+user["city"] = "Riyadh"
+user["age"] += 1
+print user
+print len(user), keys(user)
+print get(user, "phone", "-")
+
+for key in user {
+    print key, user[key]
+}</pre></div>
+  <p>لو غلطت في اسم المفتاح، الرسالة تقترح عليك الصح:</p>
+  <div class="errline">Error (line 1): key "nmae" is not in the map. Did you mean 'name'?</div>
+</article>
+
+<article data-t="lambda">
+  <h3>lambda: دالة في متغير</h3>
+  <div class="snip"><pre class="eo" data-run>var add @lambda = lambda a, b { return a + b }
+var square = lambda x { x * x }     # سطر واحد = يرجع قيمته
+
+print add(2, 3), square(4)
+
+var nums = [1, 2, 3, 4, 5]
+print map(nums, lambda x { x * 10 })
+print filter(nums, lambda x { x % 2 == 0 })
+print reduce(nums, lambda a, b { a + b })</pre></div>
+  <h4>تتذكر اللي حولها (closure)</h4>
+  <div class="snip"><pre class="eo" data-run>func makeCounter {
+    var count = 0
+    return lambda {
+        count += 1
+        return count
+    }
+}
+
+var counter = makeCounter()
+counter()
+counter()
+print counter()     # 3</pre></div>
+</article>
+
+<article data-t="import و from">
+  <h3>import و from</h3>
+  <p>كل ملف <code>.eo</code> مكتبة. عندك <code>lib.eo</code> جنب ملفك:</p>
+  <div class="snip"><pre class="eo"># lib.eo
+const PI = 3.14
+
+func add a @int, b @int {
+    return a + b
+}</pre></div>
+  <div class="snip"><pre class="eo"># main.eo
+import lib
+print lib.add(2, 3)     # 5
+print lib.PI            # 3.14
+
+from lib {add, PI}
+print add(1, 2)         # 3</pre></div>
+  <ul>
+    <li><code>import tools.strings</code> يقرأ <code>tools/strings.eo</code> وتستخدمه باسم <code>strings</code>.</li>
+    <li>كل ملف يشتغل مرة وحدة بس حتى لو استوردته أكثر من مرة.</li>
+    <li>الاستيراد الدائري يطلع خطأ واضح.</li>
+  </ul>
+  <div class="note">الملعب هنا يشغّل ملف واحد، فالـ import تجربه على جهازك.</div>
+</article>
+
+<article data-t="prc">
+  <h3><code>prc</code>: حد للوقت والذاكرة</h3>
+  <p><code>prc</code> تشغّل بلوك كود، وإذا تعدّى الوقت أو الذاكرة اللي حددتها توقفه، وتكمل باقي البرنامج عادي.</p>
+  <div class="snip"><pre class="eo" data-run>p = prc -s 2 -m 50mb {
+    var total = 0
+    for i in range(100000) {
+        total += i
+    }
+}
+print p.status
+print p.time, p.process
+
+slow = prc -s 0.5 {
+    while true {
+    }
+}
+print slow.status
+print "still running"</pre></div>
+  <div class="tbl"><table>
+    <tr><th>الخيار</th><th>المعنى</th><th>مثال</th></tr>
+    <tr><td><code>-s</code></td><td>أقصى وقت بالثواني</td><td><code>-s 0.5</code></td></tr>
+    <tr><td><code>-m</code></td><td>أقصى ذاكرة</td><td><code>-m 10mb</code> ، <code>-m 512kb</code></td></tr>
+    <tr><td>رقم لحاله</td><td>نفس <code>-s</code></td><td><code>prc 2 { ... }</code></td></tr>
+  </table></div>
+  <div class="tbl"><table>
+    <tr><th>الخاصية</th><th>وش ترجع</th></tr>
+    <tr><td><code>p.status</code></td><td><code>Completed (200 OK)</code> أو <code>Terminated (Limit Exceeded)</code> أو <code>Crashed (Runtime Error)</code></td></tr>
+    <tr><td><code>p.time</code> / <code>p.ms</code></td><td>المدة كنص، أو بالملي ثانية كرقم</td></tr>
+    <tr><td><code>p.process</code> / <code>p.memory</code></td><td>الذاكرة كنص، أو بالبايت كرقم</td></tr>
+  </table></div>
+</article>
+
+<article data-t="الدوال الجاهزة">
+  <h3>الدوال الجاهزة</h3>
+  <div class="tbl"><table>
+    <tr><th>النوع</th><th>الدوال</th></tr>
+    <tr><td>تحويل</td><td><code>int</code> <code>float</code> <code>string</code> <code>bool</code> <code>type</code></td></tr>
+    <tr><td>أرقام</td><td><code>abs</code> <code>round</code> <code>sqrt</code> <code>pow</code> <code>random</code> <code>min</code> <code>max</code> <code>sum</code></td></tr>
+    <tr><td>نصوص</td><td><code>len</code> <code>upper</code> <code>lower</code> <code>trim</code> <code>split</code> <code>join</code> <code>replace</code> <code>reverse</code></td></tr>
+    <tr><td>قوائم</td><td><code>len</code> <code>append</code> <code>pop</code> <code>sort</code> <code>reverse</code> <code>range</code> <code>remove</code></td></tr>
+    <tr><td>قواميس</td><td><code>keys</code> <code>values</code> <code>items</code> <code>has</code> <code>get</code> <code>remove</code></td></tr>
+    <tr><td>مع lambda</td><td><code>map</code> <code>filter</code> <code>reduce</code> <code>sort(list, f)</code></td></tr>
+    <tr><td>أخرى</td><td><code>input</code> <code>sleep</code> <code>exit</code></td></tr>
+  </table></div>
+  <div class="snip"><pre class="eo" data-run>print int("12"), float("1.5"), type(3.5)
+print round(3.14159, 2), sqrt(16), pow(2, 10)
+print upper("eo"), split("a,b,c", ","), join(["x", "y"], "-")
+print replace("hi", "i", "o"), reverse("abc")
+var n = input("Your name: ")
+print "Hi " + n</pre></div>
+</article>
+
+<article data-t="رسائل الأخطاء">
+  <h3>رسائل الأخطاء</h3>
+  <p>كل خطأ يطلع معه رقم السطر، وإذا كتبت اسم غلط تقترح عليك الصح.</p>
+  <div class="errline">SyntaxError (line 1): 'pritn' is not a command or a function. Did you mean 'print'?
+Error (line 2): 'nmae' is not defined. Did you mean 'name'?
+Error (line 4): 'two' takes 2 argument(s) but got 1
+Error (line 1): division by zero
+Error (line 2): index 3 is out of range (size is 1)
+SyntaxError (line 1): the '{' opened on line 1 is never closed with '}'</div>
+  <ul>
+    <li><b>SyntaxError</b>: غلط في الكتابة. يطلع قبل ما يشتغل أي سطر.</li>
+    <li><b>Error</b>: غلط وقت التشغيل. البرنامج يوقف عند هذا السطر.</li>
+  </ul>
+  <div class="snip"><pre class="eo" data-run>var name = "Ali"
+print nmae</pre></div>
+</article>
+
+<article data-t="البناء إلى exe">
+  <h3>البناء إلى <code>.exe</code></h3>
+  <pre class="out" style="margin-top:16px"><span class="p">&gt;</span> ./eo.exe build main.eo
+<span class="g">Built main.exe (2.8 MB) in 21ms</span>
+<span class="d">  1 file(s): main.eo</span>
+<span class="d">  106 bytecode instructions, 889 bytes of program data</span>
+<span class="p">&gt;</span> ./eo.exe build main.eo -o game.exe</pre>
+  <ul>
+    <li>البرنامج الناتج يشتغل لحاله: ما يحتاج eo ولا Go ولا ملفات <code>.eo</code>.</li>
+    <li>يحط معه كل المكتبات اللي تستوردها بـ <code>import</code> و <code>from</code>.</li>
+    <li>أخطاء الكتابة والمكتبات الناقصة تطلع وقت البناء، قبل ما يوصل البرنامج لأحد.</li>
+    <li>الكود الأصلي ما ينقرأ من داخل الـ <code>.exe</code> (تمويه بسيط، مو حماية حقيقية).</li>
+    <li>تبي تشوف التعليمات؟ <code>eo dis main.eo</code></li>
+  </ul>
+  <div class="note">بعض برامج الحماية تشك في البرامج المبنية بهذي الطريقة، نفس اللي يصير مع PyInstaller. لو صار، أضف المجلد للاستثناءات.</div>
+</article>
+
+<article data-t="مثال كامل">
+  <h3>مثال كامل: لعبة تخمين</h3>
+  <p>اكتب أرقامك في خانة "المدخلات" بالملعب، كل رقم في سطر.</p>
+  <div class="snip"><pre class="eo" data-run data-stdin="5
+8
+3">const MAX = 10
+var secret = random(1, MAX)
+var tries = 0
+
+print "Guess a number from 1 to " + MAX
+
+while true {
+    var line = input("> ")
+    if line == "" {
+        print "out of input, the number was " + secret
+        break
+    }
+    var guess = int(line)
+    tries += 1
+    print guess
+    if guess == secret {
+        print "Correct after " + tries + " tries"
+        break
+    } elif guess &lt; secret {
+        print "bigger"
+    } else {
+        print "smaller"
+    }
+}</pre></div>
+</article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ playground ═══ -->
+<section class="block" id="play">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>جرّبها</div>
+    <h2 class="title">الملعب</h2>
+    <p class="lead">هذا نفس مترجم eo، شغّال داخل متصفحك. اكتب واضغط تشغيل.</p>
+    <div class="play">
+      <div class="edwrap card">
+        <div class="cardbar"><i></i><i></i><i></i><span>playground.eo</span><button class="copy" id="copyEd">نسخ</button></div>
+        <div class="ed"><div class="gut" id="gut"></div><pre id="edHl" aria-hidden="true"></pre><textarea id="ed" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="كود eo"></textarea></div>
+        <div class="tools">
+          <button class="btn small" id="run"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>تشغيل</button>
+          <button class="btn small alt" id="stop" hidden>إيقاف</button>
+          <select id="examples" aria-label="أمثلة"></select>
+          <span class="hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> للتشغيل</span>
+        </div>
+      </div>
+      <div class="outwrap">
+        <div class="stdin"><label for="stdin">المدخلات (لـ <code>input</code>، كل قيمة في سطر)</label><textarea id="stdin" rows="2">Sara</textarea></div>
+        <div class="console"><div class="bar"><span>Output</span><span class="st" id="st"><i></i><span id="stText">جاهز</span></span></div><pre class="out" id="out"></pre></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ downloads ═══ -->
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>التحميل</div>
+    <h2 class="title">ابدأ على جهازك</h2>
+    <div class="dls">
+      <div class="dl card reveal">
+        <div class="top"><span class="ic"><svg fill="#fff"><use href="#logo"/></svg></span><div><h3>المترجم</h3><div class="file">eo.exe</div></div></div>
+        <div class="facts"><span>الإصدار 1.6</span><span>Windows x64</span><span><bdi>2.8 MB</bdi></span><span>بدون تثبيت</span></div>
+        <ol>
+          <li>حمّل <code>eo.exe</code> وحطه في مجلد مشروعك.</li>
+          <li>اكتب برنامجك في ملف <code>main.eo</code>.</li>
+          <li>شغّله: <code>./eo.exe main.eo</code></li>
+          <li>ولما يجهز ابنه: <code>./eo.exe build main.eo</code></li>
+        </ol>
+        <a class="btn" href="downloads/eo.exe" download><svg><use href="#dl"/></svg>تحميل eo.exe</a>
+      </div>
+      <div class="dl card reveal">
+        <div class="top"><span class="ic" style="background:var(--card);border:2px solid var(--line)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" fill="#F87171"/><rect x="13" y="3" width="8" height="8" fill="#FCA5A5"/><rect x="3" y="13" width="8" height="8" fill="#FCA5A5"/><rect x="13" y="13" width="8" height="8" fill="#E0485A"/></svg></span><div><h3>إضافة VS Code</h3><div class="file">eo-language-1.6.1.vsix</div></div></div>
+        <div class="facts"><span>الإصدار 1.6.1</span><span>تلوين</span><span>اقتراحات</span><span>أخطاء مباشرة</span><span>زر تشغيل وبناء</span></div>
+        <ol>
+          <li>حمّل ملف الإضافة.</li>
+          <li>في VS Code افتح الإضافات، واضغط <code>...</code> ثم <b>Install from VSIX</b>.</li>
+          <li>اختر الملف، واضغط <b>Restart Extensions</b>.</li>
+          <li>افتح أي ملف <code>.eo</code>، وزر البناء يكتب لك <code>./eo.exe build</code>.</li>
+        </ol>
+        <a class="btn" href="downloads/eo-language-1.6.1.vsix" download><svg><use href="#dl"/></svg>تحميل الإضافة</a>
+      </div>
+    </div>
+    <p class="warn"><span class="sq" style="width:10px;height:10px"></span>لو طلع لك تحذير SmartScreen أول مرة، اضغط "More info" ثم "Run anyway". هذا يصير مع أي برنامج جديد ما عليه توقيع.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark"><svg fill="#fff"><use href="#logo"/></svg></span>eo</a>
+    <span>لغة برمجة بسيطة، مكتوبة بـ Go.</span>
+    <nav><a href="#about">الفكرة</a><a href="#how">كيف تشتغل</a><a href="#docs">الشرح</a><a href="#play">جرّبها</a><a href="#download">التحميل</a></nav>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
